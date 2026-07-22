@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ig-bg: 250 250 250;
+  --ig-surface: 255 255 255;
+  --ig-border: 219 219 219;
+  --ig-text: 17 17 17;
+  --ig-muted: 115 115 115;
+  --ig-accent: 225 48 108;
+  --ig-accent2: 221 42 123;
+}
+
+.dark {
+  --ig-bg: 0 0 0;
+  --ig-surface: 17 17 17;
+  --ig-border: 54 54 54;
+  --ig-text: 245 245 245;
+  --ig-muted: 168 168 168;
+  --ig-accent: 225 48 108;
+  --ig-accent2: 221 42 123;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(var(--ig-bg));
+  color: rgb(var(--ig-text));
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--ig-border));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-ig-accent px-4 py-2 text-sm font-semibold text-white transition active:scale-95 hover:opacity-90 disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-ig-text transition hover:bg-black/5 dark:hover:bg-white/10 active:scale-95;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ig-border px-4 py-2 text-sm font-semibold text-ig-text transition hover:bg-black/5 dark:hover:bg-white/10 active:scale-95;
+  }
+  .card {
+    @apply rounded-xl border border-ig-border bg-ig-surface shadow-card;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ig-border bg-ig-surface px-3 py-2.5 text-sm text-ig-text outline-none transition focus:border-ig-accent placeholder:text-ig-muted;
+  }
+  .avatar-ring {
+    @apply rounded-full p-[2px] bg-gradient-to-tr from-amber-400 via-rose-500 to-fuchsia-600;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
